@@ -53,12 +53,19 @@ public class median_degree {
                 JSONObject jsonObject = (JSONObject) jsonParser.parse(line);                
                 
                 String datetime = (String) jsonObject.get("created_time");
-                if (datetime.length() != 20) continue;
+                if (datetime.length() != 20){
+					line = br.readLine();
+                	continue;
+				}
                 Date created_time = parseDate(datetime);            
                 String target = (String) jsonObject.get("target");
                 String actor = (String) jsonObject.get("actor");
-                                           
-                if (target.length()==0 || actor.length()==0) continue; //ignoring erroneous input transactions
+                 
+				//ignoring erroneous input transactions
+                if (target.length()==0 || actor.length()==0){
+					line = br.readLine();
+                	continue; 
+				}
                 
                 current_transaction = new Transaction(created_time, target, actor);
                              
