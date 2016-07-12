@@ -104,7 +104,7 @@ public class median_degree {
         	}
         	else{  //discard transactions older than 60s and do nothing
         		//print previous median degree               		            		
-        		WriteToFile(median);
+        		WriteToFile(this.CalculateMedianDegree(window));
         	}
         }		
 	}
